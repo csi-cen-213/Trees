@@ -6,6 +6,9 @@ public class Main{
   public static void main(String [ ] args) {
     String filename = "data.txt";
     BSTree tree = new BSTree(5);
+    System.out.println(tree.hasParent());
+    System.out.println(tree.hasLeft());
+    System.out.println(tree.hasRight());
 
     
     

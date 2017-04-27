@@ -20,4 +20,17 @@ public class BSTree {
     this.data = data;
   }
   
+  // methods
+  
+  public boolean hasLeft() {
+    return !(this.left == null);
+  }
+  
+  public boolean hasRight() {
+    return !(this.right == null);
+  }
+  
+  public boolean hasParent() {
+    return !(this.parent == null);
+  }
 }
