@@ -1,9 +1,9 @@
 public class BSTree {
   // properties
-  private BSTree parent;
-  private BSTree left;
-  private BSTree right;
-  private int data;
+  public BSTree parent;
+  public BSTree left;
+  public BSTree right;
+  public int data;
     
   // constructor
   public BSTree() {
@@ -32,5 +32,25 @@ public class BSTree {
   
   public boolean hasParent() {
     return !(this.parent == null);
+  }
+  
+  public void add(int data) {
+    this.add(new BSTree(data));
+  }
+  
+  // add new node to right if greater or equal, 
+  // left if less than
+  public void add(BSTree subtree) {
+    if (subtree.data < this.data) {
+      if (this.hasLeft())
+        this.left.add(subtree);
+      else
+        this.left = subtree;
+    }
+    else
+      if (this.hasRight())
+        this.right.add(subtree);
+      else
+        this.right = subtree;
   }
 }
