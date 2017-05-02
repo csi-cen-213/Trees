@@ -41,16 +41,68 @@ public class BSTree {
   // add new node to right if greater or equal, 
   // left if less than
   public void add(BSTree subtree) {
-    if (subtree.data < this.data) {
-      if (this.hasLeft())
-        this.left.add(subtree);
+    if (subtree != null) {
+      if (subtree.data < this.data) {
+        if (this.hasLeft())
+          this.left.add(subtree);
+        else {
+          this.left = subtree;
+          subtree.parent = this;
+        }
+      } // how can we modify this to link to parent?
       else
-        this.left = subtree;
+        if (this.hasRight())
+          this.right.add(subtree);
+      else {
+          this.right = subtree;
+          subtree.parent = this;
+      }
     }
-    else
-      if (this.hasRight())
-        this.right.add(subtree);
+  }
+  
+  public void print() {
+    System.out.println(this.data);
+  }
+  
+  public void inOrder() {
+    if (this.left != null)
+      this.left.inOrder();
+    this.print();
+    if (this.right != null)
+      this.right.inOrder();
+    /*if (node != null) */
+  }
+  
+  public BSTree find (int data) {
+  if(this.data == data)
+    return this;
+  else if(data < this.data && hasLeft() )
+    return left.find(data);
+  else if(data > this.data && hasRight() )
+    return right.find(data);
+  else
+    return null;
+  }
+  
+  public BSTree delete(int data) {
+    BSTree tmp = this.find(data);
+    if (tmp == null)
+      return null;
+    if (tmp.parent == null){
+      tmp.left.add(tmp.right);
+      this = tmp.left;
+    }
+    else {
+      if (tmp.parent.left.data == data)
+        tmp.parent.left = null;
       else
-        this.right = subtree;
+        tmp.parent.right = null;
+      this.add(tmp.left);
+      this.add(tmp.right);
+    }
+    tmp.parent = null;
+    tmp.left = null;
+    tmp.right = null;
+    return(tmp);
   }
 }
