@@ -6,15 +6,21 @@ public class Main{
   public static void main(String [ ] args) {
     String filename = "data.txt";
     BSTree tree = new BSTree(63);
+    System.out.println(tree.depth());
     tree.add(91);
+    System.out.println(tree.depth());
     tree.add(52);
+    System.out.println(tree.depth());
     tree.add(53);
+    System.out.println(tree.depth());
     tree.add(19);
+    System.out.println(tree.depth());
     tree.add(1);
+    System.out.println(tree.depth());
     tree.add(92);
+    System.out.println(tree.depth());
     
-    tree.delete(63);
-    tree.inOrder();
+    
     
     /*tree.find(63).print();
     tree.find(52).print();

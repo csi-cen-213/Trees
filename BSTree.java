@@ -109,4 +109,17 @@ public class BSTree {
     }
     return(tmp);
   }
+  
+  public int depth() {
+    int leftDepth = 0;
+    int rightDepth = 0;
+    if (this.hasLeft())
+      leftDepth = left.depth();
+    if (this.hasRight())
+      rightDepth = right.depth();
+    if (leftDepth > rightDepth)
+      return leftDepth + 1;
+    else
+      return rightDepth + 1;
+  }
 }
