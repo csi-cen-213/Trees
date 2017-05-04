@@ -49,11 +49,11 @@ public class BSTree {
           this.left = subtree;
           subtree.parent = this;
         }
-      } // how can we modify this to link to parent?
+      } 
       else
         if (this.hasRight())
           this.right.add(subtree);
-      else {
+        else {
           this.right = subtree;
           subtree.parent = this;
       }
@@ -61,7 +61,7 @@ public class BSTree {
   }
   
   public void print() {
-    System.out.println(this.data);
+    System.out.print(this.data + " ");
   }
   
   public void inOrder() {
@@ -90,7 +90,11 @@ public class BSTree {
       return null;
     if (tmp.parent == null){
       tmp.left.add(tmp.right);
-      this = tmp.left;
+      tmp.data = tmp.left.data;
+      tmp.right = tmp.left.right;
+      tmp.left.right.parent = tmp;
+      tmp.left = tmp.left.left;
+      tmp.left.parent = tmp;
     }
     else {
       if (tmp.parent.left.data == data)
@@ -99,10 +103,10 @@ public class BSTree {
         tmp.parent.right = null;
       this.add(tmp.left);
       this.add(tmp.right);
+      tmp.parent = null;
+      tmp.left = null;
+      tmp.right = null;
     }
-    tmp.parent = null;
-    tmp.left = null;
-    tmp.right = null;
     return(tmp);
   }
 }
