@@ -5,6 +5,7 @@ import java.io.FileReader;
 public class Main{
   public static void main(String [ ] args) {
     String filename = "data.txt";
+    // comment just to show git
     BSTree tree = new BSTree(63);
     System.out.println(tree.depth());
     tree.add(91);
