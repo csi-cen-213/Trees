@@ -6,6 +6,7 @@ public class Main{
   public static void main(String [ ] args) {
     String filename = "data.txt";
     // comment just to show git
+    // another comment to demonstrate git
     BSTree tree = new BSTree(63);
     System.out.println(tree.depth());
     tree.add(91);
